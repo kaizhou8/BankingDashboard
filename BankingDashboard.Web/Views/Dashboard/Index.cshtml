@@ -1,0 +1,66 @@
+@model BankingDashboard.Web.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h2>Your Dashboard</h2>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Balance</h5>
+                    <h2 class="card-text text-primary">@Model.TotalBalance.ToString("C")</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col">
+            <h3>Your Accounts</h3>
+            @if (!Model.Accounts.Any())
+            {
+                <div class="alert alert-info">
+                    You don't have any accounts yet. 
+                    <a asp-controller="Account" asp-action="Create" class="alert-link">Create one now</a>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    @foreach (var account in Model.Accounts)
+                    {
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">@account.AccountType</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Account #: @account.AccountNumber</h6>
+                                    <p class="card-text">
+                                        <strong>Balance:</strong> @account.Balance.ToString("C")
+                                    </p>
+                                    <a href="#" class="card-link">View Details</a>
+                                    <a href="#" class="card-link">Transfer</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <a asp-controller="Account" asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Add New Account
+            </a>
+        </div>
+    </div>
+</div>

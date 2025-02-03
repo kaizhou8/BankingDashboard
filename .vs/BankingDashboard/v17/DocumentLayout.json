@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\phoen\\Documents\\wind\\BankingDashboard\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C0108BCE-E3EB-433A-8729-0B66EBE677B7}|BankingDashboard.Web\\BankingDashboard.Web.csproj|c:\\users\\phoen\\documents\\wind\\bankingdashboard\\bankingdashboard.web\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0108BCE-E3EB-433A-8729-0B66EBE677B7}|BankingDashboard.Web\\BankingDashboard.Web.csproj|solutionrelative:bankingdashboard.web\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\phoen\\Documents\\wind\\BankingDashboard\\BankingDashboard.Web\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "BankingDashboard.Web\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\phoen\\Documents\\wind\\BankingDashboard\\BankingDashboard.Web\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "BankingDashboard.Web\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAIwCoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-02T12:38:11.286Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

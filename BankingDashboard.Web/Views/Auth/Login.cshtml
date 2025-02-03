@@ -1,0 +1,190 @@
+@model BankingDashboard.Web.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_AuthLayout";
+}
+
+<style>
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #1976D2 0%, #2196F3 100%);
+        padding: 20px;
+    }
+
+    .login-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        width: 100%;
+        max-width: 400px;
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    @@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .login-header .icon {
+        font-size: 3rem;
+        color: #1976D2;
+        margin-bottom: 15px;
+    }
+
+    .login-header h1 {
+        font-size: 1.8rem;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .login-header p {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .form-floating {
+        margin-bottom: 20px;
+    }
+
+    .form-floating input {
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        padding-left: 15px;
+    }
+
+    .form-floating label {
+        padding-left: 15px;
+    }
+
+    .form-floating input:focus {
+        border-color: #1976D2;
+        box-shadow: 0 0 0 0.2rem rgba(25, 118, 210, 0.25);
+    }
+
+    .btn-login {
+        background: linear-gradient(135deg, #1976D2 0%, #2196F3 100%);
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+    }
+
+    .register-link {
+        text-align: center;
+        margin-top: 20px;
+        color: #666;
+    }
+
+    .register-link a {
+        color: #1976D2;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .register-link a:hover {
+        color: #2196F3;
+        text-decoration: underline;
+    }
+
+    .validation-summary-errors {
+        background-color: #fff3f3;
+        border-left: 4px solid #dc3545;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .validation-summary-errors ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        color: #dc3545;
+    }
+</style>
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <div class="icon">
+                <i class="fas fa-university"></i>
+            </div>
+            <h1>Welcome Back</h1>
+            <p>Please sign in to your account</p>
+        </div>
+
+        <form asp-action="Login" asp-controller="Auth" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Username" class="form-control" placeholder="name@example.com" autocomplete="username" />
+                <label asp-for="Username">Username</label>
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Password" class="form-control" type="password" placeholder="Password" autocomplete="current-password" />
+                <label asp-for="Password">Password</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-login w-100">
+                <i class="fas fa-sign-in-alt me-2"></i>Sign In
+            </button>
+        </form>
+
+        <div class="register-link">
+            Don't have an account? <a asp-action="Register" asp-controller="Auth">Create one</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('form').on('submit', function(e) {
+                e.preventDefault();
+                
+                var data = {
+                    username: $('#Username').val(),
+                    password: $('#Password').val()
+                };
+
+                $.ajax({
+                    url: '/api/auth/login',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function(response) {
+                        localStorage.setItem('jwt_token', response.token);
+                        localStorage.setItem('user_data', JSON.stringify(response.user));
+                        window.location.href = '/Dashboard';
+                    },
+                    error: function(xhr) {
+                        $('#errorMessage')
+                            .text(xhr.responseJSON?.message || 'Login failed')
+                            .removeClass('d-none');
+                    }
+                });
+            });
+        });
+    </script>
+}

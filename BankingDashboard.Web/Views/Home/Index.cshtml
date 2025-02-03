@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container mt-5">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Welcome to Banking Dashboard</h1>
+        <p class="lead">A secure and reliable banking account management system.</p>
+        <hr class="my-4">
+        <p>Please log in to access your accounts and transactions.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="/Account/Login" role="button">Login</a>
+            <a class="btn btn-secondary btn-lg" href="/Account/Register" role="button">Register</a>
+        </p>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <h3>Account Management</h3>
+            <p>Easily manage all your bank accounts, view balances and transaction history.</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Secure Transactions</h3>
+            <p>Perform secure deposits, withdrawals, and transfers.</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Real-time Updates</h3>
+            <p>Track all your transactions and account changes in real-time.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .jumbotron {
+        background-color: #f8f9fa;
+        padding: 2rem;
+        border-radius: 0.3rem;
+    }
+
+    .btn-lg {
+        margin: 0 10px;
+    }
+
+    h3 {
+        color: #007bff;
+    }
+</style> 
